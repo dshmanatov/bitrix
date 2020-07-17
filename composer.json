@@ -6,7 +6,7 @@
     "homepage": "https://itech-group.ru",
     "license": "MIT",
 	"autoload": {
-        "psr-0": { "Itech\\Bitrix\\": "lib/" }
+        "psr-4": { "Itech\\Bitrix\\": "lib/" }
     },
     "authors": [
         {
