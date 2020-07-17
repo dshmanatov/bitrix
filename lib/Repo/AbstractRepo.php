@@ -31,13 +31,13 @@ abstract class AbstractRepo
 
     public function getList($order = [], $filter = [], $select = [], $pageTop = null)
     {
-        // @todo FIX DAT STUFF
-        if (empty($filter))
-        {
-            $filter = [
+        // @todo FIX DAT SHIZZLE
+        $filter = array_merge(
+            $filter,
+            [
                 'CHECK_PERMISSIONS' => 'N',
-            ];
-        }
+            ]
+        );
 
         $list = forward_static_call(
             [$this->getClass(), 'GetList'],
