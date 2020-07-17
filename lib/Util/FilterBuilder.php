@@ -6,7 +6,7 @@ use Itech\Bitrix\Contract\Arrayable;
 class FilterBuilder implements Arrayable
 {
     /** @var Filter[] */
-    protected $filters;
+    protected $filters = [];
 
     public function add(Filter $filter)
     {
