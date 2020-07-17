@@ -1,0 +1,18 @@
+{
+    "name": "dshmanatov/bitrix",
+    "type": "library",
+    "description": "Bitrix API wrapper",
+    "keywords": ["bitrix","api"],
+    "homepage": "https://itech-group.ru",
+    "license": "MIT",
+	"autoload": {
+        "psr-0": { "Itech\\Bitrix\\": "lib/" }
+    },
+    "authors": [
+        {
+            "name": "Dmitry Shmanatov",
+            "email": "dshmanatov@gmail.com",
+            "role": "Developer"
+        }
+    ],
+}
