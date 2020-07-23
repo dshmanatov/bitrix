@@ -105,3 +105,10 @@ class BaseRepo extends Base
 }
 
 */
+
+function log($title, $data)
+{
+    $fd = fopen('/tmp/out.txt', 'a+b');
+    fputs($fd, "{$title}: " . serialize($data) . "\n");
+    fclose($fd);
+}

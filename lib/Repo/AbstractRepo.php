@@ -23,10 +23,18 @@ abstract class AbstractRepo
             $id
         );
 
-        return forward_static_call(
-            [$this->getMapClass(), 'fromArray'],
-            $data->Fetch()
-        );
+        $result = is_array($data) ? $data : $data->Fetch();
+
+        if ($result)
+        {
+            return forward_static_call(
+                [$this->getMapClass(), 'fromArray'],
+                $result
+            );
+        } else
+        {
+            return null;
+        }
     }
 
     public function getList($order = [], $filter = [], $select = [], $pageTop = null)
