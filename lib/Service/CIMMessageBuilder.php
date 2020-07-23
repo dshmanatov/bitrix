@@ -4,7 +4,7 @@ namespace Itech\Bitrix\Service;
 use Itech\Bitrix\Model\CIMMessage;
 use Itech\Bitrix\Model\CRM\Contact;
 
-class CIMMessageBuilder
+class CIMMessageBuilder implements AbstractBuilderInterface
 {
     protected $cimMessage;
 
@@ -55,7 +55,7 @@ class CIMMessageBuilder
         return $this;
     }
 
-    public function get()
+    public function build()
     {
         return $this->cimMessage;
     }
