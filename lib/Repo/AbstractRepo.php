@@ -89,4 +89,30 @@ abstract class AbstractRepo
             },
             $array);
     }
+
+    public function update(AbstractModel $model)
+    {
+        if (!$model->isDirty())
+        {
+            return;
+        }
+
+        $dirtyFields = $model->getDirtyFields();
+        $fields = array_filter(
+            $model->toArray(),
+            function ($v, $k) use ($dirtyFields)
+            {
+                return isset($dirtyFields[$k]);
+            },
+            ARRAY_FILTER_USE_BOTH
+        );
+
+
+        $mapClass = $this->getClass();
+        $object = new $mapClass;
+        $object->Update(
+            $model->ID,
+            $fields
+        );
+    }
 }

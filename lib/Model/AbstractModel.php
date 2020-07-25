@@ -12,6 +12,8 @@ abstract class AbstractModel
 {
     protected $data;
 
+    protected $dirty = [];
+
     public static function fromArray($array)
     {
         $instance = new static;
@@ -32,7 +34,11 @@ abstract class AbstractModel
 
     public function __set($name, $value)
     {
-        $this->data[$name] = $value;
+        if ((!isset($this->data[$name])) || ($this->data[$name] !== $value))
+        {
+            $this->data[$name] = $value;
+            $this->dirty[$name] = true;
+        }
     }
 
     public function __unset($name)
@@ -43,5 +49,15 @@ abstract class AbstractModel
     public function __toString()
     {
         return print_r($this->data, true);
+    }
+
+    public function isDirty()
+    {
+        return (bool) ($this->dirty);
+    }
+
+    public function getDirtyFields()
+    {
+        return $this->dirty;
     }
 }
